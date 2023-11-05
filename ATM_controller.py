@@ -64,7 +64,7 @@ class ATMController:
         
         return balance,status
     
-    def test_case(self, test_case):
+    def execute(self, test_case):
         result = []
         if not self.check_card_num(test_case["card_number"]):
             return "wrong card"
