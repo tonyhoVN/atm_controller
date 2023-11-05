@@ -67,11 +67,11 @@ class ATMController:
     def test_case(self, test_case):
         result = []
         if not self.check_card_num(test_case["card_number"]):
-            result = "wrong card"
+            return "wrong card"
         if not self.check_pin(test_case["pin"]):
-            result = "wrong pin"
+            return "wrong pin"
         if not self.check_account_num(test_case["account"]):
-            result = "wrong account"  
+            return "wrong account"  
         for action in test_case["action"]:
             result.append(self.implement_action(action))
         return result
