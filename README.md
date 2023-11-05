@@ -70,3 +70,9 @@ Use following format to define your own test function
 def your_test_fct():
     assert atm.execute(test_cases["your_test_case"]) == your_expected_result
 ```
+
+#### Step4: Define Expected result for test case 
+- If the input card number is wrong, atm returns "wrong card"
+- If the input pin number is wrong, atm returns "wrong card"
+- If the input account number is wrong, atm returns "wrong account"
+- If the 
