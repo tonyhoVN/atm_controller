@@ -1,6 +1,6 @@
-# ATM Simulation
+# ATM Controller
 
-This is a simple ATM simulation project.
+This is a simple ATM controller.
 
 ## How to clone the Project
 
