@@ -17,6 +17,7 @@ test_cases = {
 # Declare ATM and input all cards 
 atm = ATMController(list_cards)
 
+# Define function for each test case
 def test_card_number():
     assert atm.execute(test_cases["card_number"]) == "wrong card"
 
