@@ -18,9 +18,10 @@ Firstly, install the __pytest__ by using [pip](https://pip.pypa.io/en/stable/)
 pip install pytest
 ```
 
-Use __pytest__ to run all tests in file __test.py__
+Use __pytest__ to run all tests in file __test.py__. Make sure to cd to main directory of folder atm_controller 
 
 ```bash
+cd atm_controller
 pytest ./test.py
 ```
 The result will show the number of passed test.
