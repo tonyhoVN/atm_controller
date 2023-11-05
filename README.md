@@ -46,7 +46,7 @@ Example of the information of credit card:
 
 #### Step2: Add Test Case
 
-You can add test case to object **test_cases**, which is a dictionary contains all tests you want to execute. The test case is an item in dictionary whose key is name of test (string) and the content of test (dictionary). The following table shows how to make a content of test.
+You can add test case to object **test_cases**, which is a dictionary contains all tests you want to execute. The test case is an item in dictionary whose key is name of test (string) and the content of test (dictionary). The following table shows keys and values of a content of test.
 
 | Key | Value Desc. | Key Value Type | Value |
 | -------- | -------- | -------- | ------- |
@@ -64,15 +64,15 @@ Example of the test case:
 "withdraw": {"card_number":"100", "pin":"1234", "account":"02", "action":[("Withdraw", 1),("Withdraw", 5)]}
 ```
 
+#### Step3: Define Expected Result for Test Case 
+- If the input card number is wrong, atm returns "wrong card"
+- If the input pin number is wrong, atm returns "wrong card"
+- If the input account number is wrong, atm returns "wrong account"
+- For each action, atm returns the tuple including balance after action (`int`) and status of action (`bool`). The status is `True` if action is completed, and `False` when the amount of withdraw is bigger than the current balance in this account.
+
 #### Step3: Define Test Function for Test Case 
 Use following format to define your own test function
 ```python
 def your_test_fct():
     assert atm.execute(test_cases["your_test_case"]) == your_expected_result
 ```
-
-#### Step4: Define Expected result for test case 
-- If the input card number is wrong, atm returns "wrong card"
-- If the input pin number is wrong, atm returns "wrong card"
-- If the input account number is wrong, atm returns "wrong account"
-- If the 
