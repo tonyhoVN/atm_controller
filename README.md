@@ -32,11 +32,11 @@ Open file __test.py__. Please make sure to update appropriately as following str
 #### Step1: Add Credit Cards
 You can add credit cards to object  ``list_card``. The input information for card is a dictionary which has key "card_number", "pin", and "accounts".
 
-| Key | Value Desc. | Key Value Type | 
-| -------- | -------- | -------- |
-| `card_number` | card number | `str` | 
-| `pin` | pin number | `str` |
-| `accounts` | accounts and their balances | `dict({account: balance})` |
+| Key | Value Desc. | Key Value Type | Value |
+| -------- | -------- | -------- | ------- |
+| `card_number` | card number | `String` | "101" |
+| `pin` | pin number | `String` | "1234" |
+| `accounts` | accounts and their balances | `Dictionary` | {"01":5, "02":6} |
 
 For instance, the information of credit card is
 
@@ -50,8 +50,8 @@ You can add test case to object **test_cases**, which is a dictionary contains a
 
 | Key | Value Desc. | Key Value Type | 
 | -------- | -------- | -------- |
-| `card_number` | card number | `str` | 
-| `pin` | pin number | `str` |
-| `accounts` | accounts and their balances | `dict` {account: balance} |
+| `card_number` | input card number | `str` | 
+| `pin` | input pin number | `str` |
+| `account` | input account want to implement action | `str` |
 
 Example of the test case 
