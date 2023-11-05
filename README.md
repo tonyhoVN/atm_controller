@@ -30,28 +30,43 @@ The result will show the number of passed test.
 Open file __test.py__. Please make sure to update appropriately as following structure.
 
 #### Step1: Add Credit Cards
-You can add credit cards to object  ``list_card``. The input information for card is a dictionary which has key "card_number", "pin", and "accounts".
+You can add credit cards to object  ``list_card``. The input information for card is a dictionary which has key "card_number", "pin", and "accounts". The table shows keys and values of card.
 
 | Key | Value Desc. | Key Value Type | Value |
 | -------- | -------- | -------- | ------- |
-| `card_number` | card number | `String` | "101" |
+| `card_number` | card number | `String` | "100" |
 | `pin` | pin number | `String` | "1234" |
-| `accounts` | accounts and their balances | `Dictionary` | {"01":5, "02":6} |
+| `accounts` | accounts and their balances | `Dictionary` | {"01":3, "02":4} |
 
-For instance, the information of credit card is
+Example of the information of credit card:
 
 ```python
-{"card_number":"101", "pin":"1234", "accounts":{"01":5, "02":6} }
+{"card_number":"100", "pin":"1234", "accounts":{"01":3, "02":4} }
 ```
 
 #### Step2: Add Test Case
 
-You can add test case to object **test_cases**, which is a dictionary contains all tests you want to execute. The test case is an item in dictionary whose key is name of test (string) and the content of test (dictionary). The keys of content includes input card number, input pin, selected account (if you want to implement some actions in this account), and the list of actions you want to implement. Each action is a tuple whose first element is on of three action ["See Balance", "Withdraw", or "Deposit"]. The second element of action is the amount of money if action is "Withdraw" or "Deposit", or *None* value if the action is "See Balance".
+You can add test case to object **test_cases**, which is a dictionary contains all tests you want to execute. The test case is an item in dictionary whose key is name of test (string) and the content of test (dictionary). The following table shows how to make a content of test.
 
-| Key | Value Desc. | Key Value Type | 
-| -------- | -------- | -------- |
-| `card_number` | input card number | `str` | 
-| `pin` | input pin number | `str` |
-| `account` | input account want to implement action | `str` |
+| Key | Value Desc. | Key Value Type | Value |
+| -------- | -------- | -------- | ------- |
+| `card_number` | input card number | `String` | "100" |
+| `pin` | input pin number | `String` | "1234" |
+| `account` | input account want to implement action | `String` | "01" |
+| `action` | list of action want to implement | list of tuple(`String`, `int` or `None`) | [("See Balance", None)] |
 
-Example of the test case 
+> **NOTE:**
+> - Each action is a tuple whose first element is on of three action `"See Balance"`, `"Withdraw"`, or `"Deposit"`.
+> - The second element of action is the amount of money if action is `"Withdraw"` or `"Deposit"`, or `None` value if the action is `"See Balance"`.
+
+Example of the test case:
+```python
+"withdraw": {"card_number":"100", "pin":"1234", "account":"02", "action":[("Withdraw", 1),("Withdraw", 5)]}
+```
+
+#### Step3: Define Test Function for Test Case 
+Use following format to define your own test function
+```python
+def your_test_fct():
+    assert atm.execute(test_cases["your_test_case"]) == your_expected_result
+```
