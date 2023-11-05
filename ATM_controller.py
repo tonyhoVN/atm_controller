@@ -75,10 +75,3 @@ class ATMController:
         for action in test_case["action"]:
             result.append(self.implement_action(action))
         return result
-
-            
-
-        
-
-
-
