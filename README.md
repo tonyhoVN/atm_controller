@@ -72,7 +72,7 @@ Example of the test case:
 - For each action, atm returns the tuple including balance after action (`int`) and status of action (`bool`). The status is `True` if action is completed, and `False` when the amount of withdraw is bigger than the current balance in this account.
 - If there is no action (the action is an empty list), the atm returns `[]`.
 
-#### Step3: Define Test Function for Test Case 
+#### Step4: Define Test Function for Test Case 
 Use following format to define your own test function
 ```python
 def your_test_fct():
