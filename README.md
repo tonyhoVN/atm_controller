@@ -7,27 +7,19 @@ This is a simple ATM controller.
 Use git clone to clone the package to your directory 
 
 ```bash
-git clone https://github.com/hoanhtung2000/atm_controller.git
+git clone https://github.com/tonyhoVN/atm_controller.git
 ```
 
 ## Run test
-
-Firstly, install the __pytest__ by using [pip](https://pip.pypa.io/en/stable/)
-
-```bash
-pip install pytest
-```
-
-Use __pytest__ to run all tests in file __test.py__. Make sure to cd to main directory of folder atm_controller 
+Run file __test.py__ to check all the tests. Ensure to cd to main directory of folder __atm_controller__.
 
 ```bash
 cd atm_controller
-pytest ./test.py
+python ./test.py
 ```
-The result will show the number of passed test.
+The result will show the number of passed tests.
 
 ## Build test
-
 Open file __test.py__. Please make sure to update appropriately as following structure.
 
 #### Step1: Add Credit Cards
@@ -49,31 +41,37 @@ Example of the information of credit card:
 
 You can add test case to object **test_cases**, which is a dictionary contains all tests you want to execute. The test case is an item of dictionary whose key is name of test (string) and value is the content of test (dictionary). 
 
-The following table shows keys and values of the content of test.
+The following table shows keys and values of the content of one test.
 
 | Key | Value Desc. | Key Value Type | Value |
 | -------- | -------- | -------- | ------- |
 | `card_number` | input card number | `String` | "100" |
 | `pin` | input pin number | `String` | "1234" |
-| `account` | input account want to implement action | `String` | "01" |
-| `action` | list of action want to implement | list of tuple(`String`, `int`) | [("See Balance", 0)] |
+| `account` | input account want to implement actions | `String` | "01" |
+| `action` | list of actions want to implement on the selected account | list of tuple(`String`, `int`) | [("See Balance", 0)] |
+| `result` | expected result for the test case | `String` or list of `int` | "wrong card" or [2, 4] |
 
-> **NOTE:**
-> - Each action is a tuple whose first element is one of three actions: `"See Balance"`, `"Withdraw"`, or `"Deposit"`.
-> - The second element of action is the amount of money for the action. If the action is `"See Balance"`, the second element is always `0`.
+#### 2.1: Define actions 
+The list of actions can be selected by following rules:
+- Each action is a tuple whose first element is one of three actions: `"See Balance"`, `"Withdraw"`, or `"Deposit"`.
+- The second element of each action is the amount of money. If the action is `"See Balance"`, the second element is always `0`.
+- If there is no input action, the action list is an empty list `[]`.
 
-Example of the test case:
+Example of the action:
 ```python
-"withdraw": {"card_number":"100", "pin":"1234", "account":"02", "action":[("Withdraw", 1),("Withdraw", 5)]}
+"action":[("Deposit", 1),("Withdraw", 5)]
 ```
 
-#### Step3: Define Expected Result for Test Case 
-The expected result is determined manually by following rules:
-- If the input card number is wrong, atm returns "wrong card"
-- If the input pin number is wrong, atm returns "wrong card"
-- If the input account number is wrong, atm returns "wrong account"
-- While implementing actions, atm returns the list of balance of the account after actions implemented. The blance is unchanged if the amount of withdraw is greater than the current balance of this account.
-- If there is no action (the action is an empty list), the atm returns an empty list `[]`.
+#### 2.2: Define expected result for test case 
+The expected result for test case is a list contains result after each action is implemented. The result is determined manually by following rules:
+- If the input card number is wrong, atm should return "wrong card"
+- If the input pin number is wrong, atm should return "wrong card"
+- If the input account number is wrong, atm should return "wrong account"
+- If the `card_number`, `pin`, and `account` are correct, the atm should return the list of account balance after implementing each action. 
+
+> **Note**
+> - The blance is unchanged if the amount of withdraw is greater than the current balance of this account.
+> - If there is no action, the atm should return an empty list `[]`.
 
 Example:
 - Input card is:
@@ -82,15 +80,20 @@ Example:
 ```
 - Input action is:
 ```python 
-"withdraw": {"card_number":"100", "pin":"1234", "account":"02", "action":[("Withdraw", 1),("Withdraw", 5)]}
+"withdraw": {"card_number":"100", 
+             "pin":"1234",
+             "account":"02", 
+             "action":[("Withdraw", 1),("Withdraw", 5)]}
 ```
-- Expected result is: `[3, 3]`
-
-#### Step4: Define Test Function for Test Case 
-Use following format to define your own test function
+- Expected result is: 
 ```python
-def your_test_fct():
-    assert atm.execute(test_cases["your_test_case"]) == your_expected_result
+"result":[3, 3]
 ```
-
-Replace `your_test_fct`, `your_test_case`, `your expected_result` with a name of a function, name of test case, and the expected result for this test case.
+- Full action define:
+```python 
+"withdraw": {"card_number":"100", 
+             "pin":"1234",
+             "account":"02", 
+             "action":[("Withdraw", 1),("Withdraw", 5)],
+             "result":[3, 3]}
+```
