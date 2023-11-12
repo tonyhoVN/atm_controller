@@ -69,7 +69,7 @@ The expected result for test case is a list contains result after each action is
 - If the input account number is wrong, atm should return "wrong account"
 - If the `card_number`, `pin`, and `account` are correct, the atm should return the list of account balance after implementing each action. 
 
-> **Note**
+> **NOTE:**
 > - The blance is unchanged if the amount of withdraw is greater than the current balance of this account.
 > - If there is no action, the atm should return an empty list `[]`.
 
