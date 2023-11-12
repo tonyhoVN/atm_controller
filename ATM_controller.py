@@ -8,22 +8,22 @@ class Card:
         self.selected_account = account_num # select the account to handle
 
     def see_balance(self):
-        return self.accounts[self.selected_account], True
+        return self.accounts[self.selected_account]
     
     def deposit(self, amount: int):
         # Increase blance
         self.accounts[self.selected_account] += amount
-        return self.accounts[self.selected_account], True
+        return self.accounts[self.selected_account]
 
     def withdraw(self, amount: int):
         current = self.accounts[self.selected_account]
         if amount > current:
             # print("Your balance is not enough")
-            return self.accounts[self.selected_account], False
+            return self.accounts[self.selected_account]
         if amount <= current:
             self.accounts[self.selected_account] -= amount
             # print("You withdrew %d dollars" %amount )
-            return self.accounts[self.selected_account], True
+            return self.accounts[self.selected_account]
 
 
 class ATMController:
@@ -52,17 +52,16 @@ class ATMController:
     
     def implement_action(self, action: tuple):
         balance = None
-        status = None
         if action[0] == "See Balance":
-            balance,status = self.selected_card.see_balance()
+            balance = self.selected_card.see_balance()
             
         if action[0] == "Withdraw":
-            balance,status = self.selected_card.withdraw(amount=action[1])
+            balance = self.selected_card.withdraw(amount=action[1])
 
         if action[0] == "Deposit":
-            balance,status = self.selected_card.deposit(amount=action[1])
+            balance = self.selected_card.deposit(amount=action[1])
         
-        return balance,status
+        return balance
     
     def execute(self, test_case):
         result = []

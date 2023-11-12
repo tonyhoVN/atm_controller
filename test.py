@@ -9,7 +9,7 @@ test_cases = {
     "card_number": {"card_number":"102", "pin":"1234", "account":"01", "action":[]},
     "pin": {"card_number":"100", "pin":"1235", "account":"01", "action":[]},
     "account": {"card_number":"100", "pin":"1234", "account":"03", "action":[]}, 
-    "balance": {"card_number":"100", "pin":"1234", "account":"01", "action":[("See Balance", None)]},
+    "balance": {"card_number":"100", "pin":"1234", "account":"01", "action":[("See Balance", 0)]},
     "withdraw": {"card_number":"100", "pin":"1234", "account":"02", "action":[("Withdraw", 1),("Withdraw", 5)]},
     "deposit": {"card_number":"100", "pin":"1234", "account":"01", "action":[("Deposit", 5)]}
 }
@@ -26,12 +26,13 @@ def test_pin_number():
 
 def test_account_number():
     assert atm.execute(test_cases["account"]) == "wrong account"
-
+    
 def test_balance():
-    assert atm.execute(test_cases["balance"]) == [(3,True)]
+    assert atm.execute(test_cases["balance"]) == [3]
 
 def test_withdraw():
-    assert atm.execute(test_cases["withdraw"]) == [(3, True),(3, False)]
+    assert atm.execute(test_cases["withdraw"]) == [3, 3]
 
 def test_deposit():
-    assert atm.execute(test_cases["deposit"]) == [(8, True)]
+    assert atm.execute(test_cases["deposit"]) == [8]
+
