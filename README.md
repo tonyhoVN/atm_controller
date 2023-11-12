@@ -20,7 +20,7 @@ python ./test.py
 The result will show the number of passed tests.
 
 ## Build test
-Open file __test.py__. Please make sure to update appropriately as following structure.
+Open file __test.py__. Please make sure to update appropriately as following introduction.
 
 #### Step1: Add Credit Cards
 You can add credit cards to object  ``list_card``. The input information for card is a dictionary which has key "card_number", "pin", and "accounts". The table shows keys and values of card.
